@@ -112,7 +112,7 @@ def fetch_rss(source: dict, max_items: int = 20) -> list[dict]:
                 "source_name":    source["name"],
                 "tier":           source["tier"],
                 "title":          title,
-                "url":            link,
+                "url": source.get("source_url_override") or link or source["url"],
                 "content_hash":   make_content_hash(title, link),
                 "collected_at":   datetime.now(timezone.utc).isoformat(),
                 "published_at":   normalize_date(entry),
