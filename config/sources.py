@@ -16,7 +16,7 @@ SOURCES = [
         "category_hint": "safety",
         "interval_minutes": 60,
         "lang": "ja",
-        "filter_keywords": ["サウジ", "Saudi"],  # 絞り込みキーワード
+        "filter_keywords": ["サウジ", "Saudi", "サウジアラビア", "アラビア", "リヤド", "ジェッダ", "ジッダ"],  # 絞り込みキーワード
         "alert_override": True,  # Tier1安全情報は強制的にalert_level=urgent候補
     },
     {
