@@ -125,7 +125,7 @@ footer{border-top:0.5px solid var(--border);padding:20px 24px}
       </div>
     </a>
     <nav class="main-nav"><a href="index.html" class="">すべて</a><a href="search.html" class="active">検索</a><a href="glossary.html" class="">用語集</a></nav>
-    <span class="last-update">更新 03/26 09:26</span>
+    <span class="last-update">更新 03/26 09:38</span>
   </div>
 </header>
 <div class="geo-stripe"></div>
@@ -181,7 +181,7 @@ function highlight(text, q) {
 function renderCard(a, q) {
   const levelLabel = a.level_label ? `<span class="badge ${LEVEL_CLASS[a.level]}">${esc(a.level_label)}</span>` : '';
   const srcLink = a.source_url
-    ? `<a href="${esc(a.source_url)}" target="_blank" rel="noopener" class="source-link">原典 ↗</a>`
+    ? `<a href="${esc(a.source_url)}" target="_blank" rel="noopener" class="source-link">出典 ↗</a>`
     : '';
   return `
 <article style="background:white;border:0.5px solid var(--border);border-radius:var(--radius);
@@ -239,7 +239,7 @@ doSearch('');
   <div class="footer-inner">
     <div class="footer-note">
       © 2026 在サウジ邦人ポータル — 掲載情報は参考目的です。<br>
-      重要な判断は必ず原典（情報源リンク）および公式機関でご確認ください。
+      重要な判断は必ず出典（情報源リンク）および公式機関でご確認ください。
     </div>
     <div class="footer-note">AIエージェントによる自動収集 + 編集部による精査</div>
   </div>
