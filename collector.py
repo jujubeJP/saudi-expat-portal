@@ -80,6 +80,7 @@ def fetch_rss(source: dict, max_items: int = 20) -> list[dict]:
             resp = client.get(url)
             resp.raise_for_status()
             feed_text = resp.content.decode('shift_jis', errors='replace')
+            feed_text = feed_text.replace('encoding="shift_jis"', 'encoding="utf-8"')
 
         feed = feedparser.parse(url)
 
