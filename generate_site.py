@@ -9,7 +9,7 @@ site/ ディレクトリに以下を生成する:
     search.html     全文検索ページ（クライアントサイドJS）
     glossary.html   用語集インデックス
     articles/
-      {id}.html     記事詳細ページ（原典リンク必須）
+      {id}.html     記事詳細ページ（出典リンク必須）
     data/
       articles.json  検索用データ（search.htmlが参照）
       glossary.json  用語データ（glossary.htmlが参照）
@@ -273,7 +273,7 @@ def html_footer() -> str:
   <div class="footer-inner">
     <div class="footer-note">
       © 2026 在サウジ邦人ポータル — 掲載情報は参考目的です。<br>
-      重要な判断は必ず原典（情報源リンク）および公式機関でご確認ください。
+      重要な判断は必ず出典（情報源リンク）および公式機関でご確認ください。
     </div>
     <div class="footer-note">AIエージェントによる自動収集 + 編集部による精査</div>
   </div>
@@ -281,7 +281,7 @@ def html_footer() -> str:
 
 
 def article_card_html(a: dict, path_prefix: str = "") -> str:
-    """記事カードHTML。原典リンクを必ず含む。"""
+    """記事カードHTML。出典リンクを必ず含む。"""
     lvl   = a.get("alert_level", "low")
     label = alert_label(lvl)
     badge = f'<span class="badge {alert_class(lvl)}">{e(label)}</span>' if label else ""
@@ -299,7 +299,7 @@ def article_card_html(a: dict, path_prefix: str = "") -> str:
             f'<span class="tier-dot tier-{tier}" title="{e(tier_label(tier))}"></span>'
             f'<span style="font-size:10px;color:var(--ink-muted)">{e(sname)}</span>'
             f'<a href="{e(url)}" target="_blank" rel="noopener noreferrer" class="source-link">'
-            f'原典を確認 ↗</a></div>'
+            f'出典を確認 ↗</a></div>'
         )
 
     return f"""
@@ -340,7 +340,7 @@ def build_index(articles: list, out_dir: Path) -> None:
         url = a.get("source_url","") or ""
         sname = a.get("source_name","")
         src_link = (f'<a href="{e(url)}" target="_blank" rel="noopener" class="source-link">'
-                    f'原典を確認 ↗</a>') if url and url != "#" else ""
+                    f'出典を確認 ↗</a>') if url and url != "#" else ""
         featured_html = f"""
 <a href="articles/{e(a['id'])}.html" style="display:block;text-decoration:none">
 <article style="background:var(--ink);border-radius:var(--radius);padding:22px;
@@ -445,12 +445,12 @@ def build_article(a: dict, out_dir: Path) -> None:
     sname = a.get("source_name","")
     tags  = a.get("tags",[])
 
-    # 原典リンクブロック（記事詳細では強調表示）
+    # 出典リンクブロック（記事詳細では強調表示）
     source_block = f"""
 <div style="background:white;border:0.5px solid var(--border);border-radius:var(--radius);
   padding:16px;margin-top:24px">
   <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--ink-muted);margin-bottom:10px">情報源・原典</div>
+    color:var(--ink-muted);margin-bottom:10px">情報源・出典</div>
   <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
     <span class="tier-dot tier-{tier}" style="width:6px;height:6px"
       title="{e(tier_label(tier))}"></span>
@@ -458,9 +458,9 @@ def build_article(a: dict, out_dir: Path) -> None:
     <span style="font-size:11px;color:var(--ink-muted)">（{e(tier_label(tier))}）</span>
   </div>
   {f'<div style="margin-top:10px"><a href="{e(url)}" target="_blank" rel="noopener noreferrer" '
-    f'class="source-link" style="font-size:13px">原典ページを開く ↗</a></div>'
+    f'class="source-link" style="font-size:13px">出典ページを開く ↗</a></div>'
     if url and url != "#" else
-    '<div style="margin-top:6px;font-size:11px;color:var(--ink-muted)">この記事の原典URLは記録されていません。</div>'}
+    '<div style="margin-top:6px;font-size:11px;color:var(--ink-muted)">この記事の出典URLは記録されていません。</div>'}
   <div style="margin-top:8px;font-size:10px;color:var(--ink-muted)">
     収集日時: {e(a.get("collected_at","")[:16])}
   </div>
@@ -535,7 +535,7 @@ def build_article(a: dict, out_dir: Path) -> None:
 def build_search(articles: list, out_dir: Path) -> None:
     """検索ページ (search.html) を生成する。全記事データをJSONとして埋め込む。"""
 
-    # 検索用データ（原典URLを含む）
+    # 検索用データ（出典URLを含む）
     search_data = [
         {
             "id":          a["id"],
@@ -612,7 +612,7 @@ function highlight(text, q) {{
 function renderCard(a, q) {{
   const levelLabel = a.level_label ? `<span class="badge ${{LEVEL_CLASS[a.level]}}">${{esc(a.level_label)}}</span>` : '';
   const srcLink = a.source_url
-    ? `<a href="${{esc(a.source_url)}}" target="_blank" rel="noopener" class="source-link">原典 ↗</a>`
+    ? `<a href="${{esc(a.source_url)}}" target="_blank" rel="noopener" class="source-link">出典 ↗</a>`
     : '';
   return `
 <article style="background:white;border:0.5px solid var(--border);border-radius:var(--radius);
