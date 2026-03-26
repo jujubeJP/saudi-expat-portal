@@ -353,18 +353,18 @@ def build_index(articles: list, out_dir: Path) -> None:
   </svg>
   <div style="display:flex;gap:5px;margin-bottom:11px">
     <span class="badge" style="background:rgba(255,120,100,.18);color:#FF8A78">{e(alert_label(a.get("alert_level","low")))}</span>
-    <span class="badge" style="background:rgba(255,255,255,.08);color:rgba(244,237,224,.95)">{e(cat_label(a.get("category_main","")))}</span>
+    <span class="badge" style="background:rgba(255,255,255,.08);color:#F0E6CC)">{e(cat_label(a.get("category_main","")))}</span>
   </div>
   <h2 style="font-family:var(--body-serif);font-size:17px;font-weight:300;
     color:var(--sand);line-height:1.55;margin-bottom:9px">{e(a.get("title_ja",""))}</h2>
-  <p style="font-size:12px;color:rgba(244,237,224,.82);line-height:1.7;margin-bottom:14px">
+  <p style="font-size:12px;color:#F0E6CC;line-height:1.7;margin-bottom:14px">
     {e(a.get("lead_ja",""))}</p>
   <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
     <span style="font-size:11px;color:var(--gold);letter-spacing:.04em">詳細を読む →</span>
     <div style="display:flex;align-items:center;gap:6px">
       <span class="tier-dot tier-{a.get('source_tier',2)}"
         style="width:5px;height:5px" title="{e(tier_label(a.get('source_tier',2)))}"></span>
-      <span style="font-size:10px;color:rgba(244,237,224,.55)">{e(sname)}</span>
+      <span style="font-size:10px;color:rgba(244,237,224,.75)">{e(sname)}</span>
       {src_link}
     </div>
   </div>
