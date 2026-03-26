@@ -1,0 +1,86 @@
+name: 収集 Tier2（主要英字メディア）
+
+on:
+  schedule:
+    # 06:00 / 12:00 / 18:00 / 00:00 UTC（JST +9）
+    - cron: '0 0,6,12,18 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'ドライラン（DB書き込み・通知なし）'
+        type: boolean
+        default: false
+
+concurrency:
+  group: collect-tier2
+  cancel-in-progress: true
+
+jobs:
+  collect:
+    name: Tier2 収集・サイト更新
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Tier2 収集（Arab News・Saudi Gazette・Expatica）
+        env:
+          ANTHROPIC_API_KEY:    ${{ secrets.ANTHROPIC_API_KEY }}
+          SUPABASE_URL:         ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY:         ${{ secrets.SUPABASE_KEY }}
+          LINE_NOTIFY_TOKEN:    ${{ secrets.LINE_NOTIFY_TOKEN }}
+          SMTP_HOST:            ${{ secrets.SMTP_HOST }}
+          SMTP_PORT:            ${{ secrets.SMTP_PORT }}
+          SMTP_USER:            ${{ secrets.SMTP_USER }}
+          SMTP_PASS:            ${{ secrets.SMTP_PASS }}
+          NOTIFY_EMAIL:         ${{ secrets.NOTIFY_EMAIL }}
+          SITE_OUTPUT_DIR:      site
+          DRY_RUN:              ${{ inputs.dry_run || 'false' }}
+          LOG_LEVEL:            INFO
+          MAX_ARTICLES_PER_RUN: '50'
+        run: |
+          python main.py --source arab_news
+          python main.py --source arab_news_saudi
+          python main.py --source saudi_gazette
+          python main.py --source expatica_sa
+
+      - name: サイト再生成
+        if: ${{ inputs.dry_run != 'true' }}
+        run: python generate_site.py --output site
+
+      - name: 変更をコミット
+        if: ${{ inputs.dry_run != 'true' }}
+        run: |
+          git config user.name  "Saudi Portal Bot"
+          git config user.email "bot@saudi-expat-jp.example.com"
+          git add data/articles.json site/
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: Tier2収集 $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push
+            echo "COMMITTED=true" >> $GITHUB_ENV
+          else
+            echo "COMMITTED=false" >> $GITHUB_ENV
+          fi
+
+      - name: GitHub Pages デプロイ
+        if: env.COMMITTED == 'true'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir:  ./site
+          commit_message: "deploy: Tier2更新 $(date -u '+%Y-%m-%d %H:%M UTC')"

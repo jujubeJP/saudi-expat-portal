@@ -1,0 +1,62 @@
+name: 手動デプロイ・サイト再構築
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: '実行理由（ログ用）'
+        required: false
+        default: '手動デプロイ'
+      rebuild_all:
+        description: '全記事を再生成（用語集更新後など）'
+        type: boolean
+        default: true
+
+jobs:
+  deploy:
+    name: サイト再構築 & デプロイ
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: サイト全体を再生成
+        run: python generate_site.py --output site
+
+      - name: 変更をコミット
+        run: |
+          git config user.name  "Saudi Portal Bot"
+          git config user.email "bot@saudi-expat-jp.example.com"
+          git add site/
+          if ! git diff --cached --quiet; then
+            git commit -m "deploy: 手動再構築 — ${{ inputs.reason }} $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push
+          else
+            echo "変更なし"
+          fi
+
+      - name: GitHub Pages デプロイ
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir:  ./site
+          commit_message: "deploy: ${{ inputs.reason }}"
+
+      - name: デプロイ完了通知
+        run: |
+          echo "::notice title=デプロイ完了::${{ inputs.reason }} — $(date -u '+%Y-%m-%d %H:%M UTC')"

@@ -1,0 +1,40 @@
+name: CI テスト
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.py'
+      - 'config/*.py'
+      - 'requirements.txt'
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: パイプライン構造テスト
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: APIキー不要テスト（モックデータ）
+        run: python test_pipeline.py
+
+      - name: サイトジェネレーター動作確認
+        run: python generate_site.py --output /tmp/test-site
+
+      - name: 生成ファイルの存在確認
+        run: |
+          test -f /tmp/test-site/index.html    && echo "✓ index.html"
+          test -f /tmp/test-site/search.html   && echo "✓ search.html"
+          test -f /tmp/test-site/glossary.html && echo "✓ glossary.html"
+          ls /tmp/test-site/articles/ | wc -l  | xargs echo "✓ 記事ページ数:"

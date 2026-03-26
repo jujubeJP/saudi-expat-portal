@@ -1,0 +1,126 @@
+name: 収集 日次（省庁スクレイプ）+ 週次ダイジェスト
+
+on:
+  schedule:
+    # 毎日 02:00 JST = 17:00 UTC（前日）
+    - cron: '0 17 * * *'
+  workflow_dispatch:
+    inputs:
+      run_digest:
+        description: '週次ダイジェストも今すぐ送信する'
+        type: boolean
+        default: false
+      dry_run:
+        description: 'ドライラン'
+        type: boolean
+        default: false
+
+concurrency:
+  group: collect-daily
+  cancel-in-progress: false
+
+jobs:
+  # ─────────────────────────────────────────────────────
+  # JOB 1: 省庁・政府系の日次スクレイプ
+  # ─────────────────────────────────────────────────────
+  collect-daily:
+    name: 日次収集（HRSD・GOV.SA）
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: 省庁スクレイプ
+        env:
+          ANTHROPIC_API_KEY:    ${{ secrets.ANTHROPIC_API_KEY }}
+          SUPABASE_URL:         ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY:         ${{ secrets.SUPABASE_KEY }}
+          LINE_NOTIFY_TOKEN:    ${{ secrets.LINE_NOTIFY_TOKEN }}
+          SMTP_HOST:            ${{ secrets.SMTP_HOST }}
+          SMTP_PORT:            ${{ secrets.SMTP_PORT }}
+          SMTP_USER:            ${{ secrets.SMTP_USER }}
+          SMTP_PASS:            ${{ secrets.SMTP_PASS }}
+          NOTIFY_EMAIL:         ${{ secrets.NOTIFY_EMAIL }}
+          SITE_OUTPUT_DIR:      site
+          DRY_RUN:              ${{ inputs.dry_run || 'false' }}
+          LOG_LEVEL:            INFO
+          MAX_ARTICLES_PER_RUN: '30'
+        run: |
+          python main.py --source hrsd_gov
+          python main.py --source moh_sehhaty
+
+      - name: サイト再生成
+        if: ${{ inputs.dry_run != 'true' }}
+        run: python generate_site.py --output site
+
+      - name: コミット & プッシュ
+        if: ${{ inputs.dry_run != 'true' }}
+        run: |
+          git config user.name  "Saudi Portal Bot"
+          git config user.email "bot@saudi-expat-jp.example.com"
+          git add data/articles.json site/
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: 日次収集 $(date -u '+%Y-%m-%d')"
+            git push
+            echo "COMMITTED=true" >> $GITHUB_ENV
+          else
+            echo "COMMITTED=false" >> $GITHUB_ENV
+          fi
+
+      - name: GitHub Pages デプロイ
+        if: env.COMMITTED == 'true'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir:  ./site
+
+  # ─────────────────────────────────────────────────────
+  # JOB 2: 週次ダイジェスト（月曜のみ、または手動）
+  # ─────────────────────────────────────────────────────
+  weekly-digest:
+    name: 週次ダイジェスト送信
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # 月曜日（UTC日曜17時 = JST月曜02時）、または手動でrun_digest=true
+    if: |
+      (github.event_name == 'schedule' && startsWith(github.event.schedule, '0 17') && github.event.schedule == '0 17 * * 0') ||
+      (github.event_name == 'workflow_dispatch' && inputs.run_digest == 'true')
+    needs: collect-daily
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: 週次ダイジェスト送信
+        env:
+          ANTHROPIC_API_KEY:  ${{ secrets.ANTHROPIC_API_KEY }}
+          SUPABASE_URL:       ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY:       ${{ secrets.SUPABASE_KEY }}
+          SMTP_HOST:          ${{ secrets.SMTP_HOST }}
+          SMTP_PORT:          ${{ secrets.SMTP_PORT }}
+          SMTP_USER:          ${{ secrets.SMTP_USER }}
+          SMTP_PASS:          ${{ secrets.SMTP_PASS }}
+          NOTIFY_EMAIL:       ${{ secrets.NOTIFY_EMAIL }}
+          DRY_RUN:            ${{ inputs.dry_run || 'false' }}
+        run: python main.py --digest

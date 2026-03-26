@@ -1,0 +1,94 @@
+name: 収集 Tier1（大使館・外務省）
+
+on:
+  schedule:
+    # 毎時15分に実行（UTC）= JST 毎時15分・毎時45分 の交互で安全情報を確認
+    - cron: '15 * * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'ドライラン（DB書き込み・通知なし）'
+        type: boolean
+        default: false
+
+concurrency:
+  group: collect-tier1
+  cancel-in-progress: false   # 安全情報は中断させない
+
+jobs:
+  collect:
+    name: Tier1 収集・サイト更新
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      contents: write           # articles.json をコミットするため
+      pages: write
+      id-token: write
+
+    steps:
+      - name: チェックアウト
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Python セットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: 依存関係インストール
+        run: pip install -r requirements.txt
+
+      - name: Tier1 収集（大使館・外務省・MOH）
+        env:
+          ANTHROPIC_API_KEY:   ${{ secrets.ANTHROPIC_API_KEY }}
+          SUPABASE_URL:        ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY:        ${{ secrets.SUPABASE_KEY }}
+          LINE_NOTIFY_TOKEN:   ${{ secrets.LINE_NOTIFY_TOKEN }}
+          SMTP_HOST:           ${{ secrets.SMTP_HOST }}
+          SMTP_PORT:           ${{ secrets.SMTP_PORT }}
+          SMTP_USER:           ${{ secrets.SMTP_USER }}
+          SMTP_PASS:           ${{ secrets.SMTP_PASS }}
+          NOTIFY_EMAIL:        ${{ secrets.NOTIFY_EMAIL }}
+          SITE_OUTPUT_DIR:     site
+          DRY_RUN:             ${{ inputs.dry_run || 'false' }}
+          LOG_LEVEL:           INFO
+          MAX_ARTICLES_PER_RUN: '30'
+        run: |
+          python main.py --source mofa_anzen
+          python main.py --source embassy_riyadh
+          python main.py --source moh_sehhaty
+
+      - name: サイト再生成
+        if: ${{ inputs.dry_run != 'true' }}
+        run: python generate_site.py --output site
+
+      - name: 変更をコミット（articles.json + site/）
+        if: ${{ inputs.dry_run != 'true' }}
+        run: |
+          git config user.name  "Saudi Portal Bot"
+          git config user.email "bot@saudi-expat-jp.example.com"
+          git add data/articles.json site/
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: Tier1収集 $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push
+            echo "COMMITTED=true" >> $GITHUB_ENV
+          else
+            echo "COMMITTED=false" >> $GITHUB_ENV
+            echo "変更なし — コミットをスキップ"
+          fi
+
+      - name: GitHub Pages デプロイ
+        if: env.COMMITTED == 'true'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir:  ./site
+          commit_message: "deploy: Tier1更新 $(date -u '+%Y-%m-%d %H:%M UTC')"
+
+      - name: 収集サマリーをAnnotationに出力
+        if: always()
+        run: |
+          echo "::notice title=Tier1収集完了::$(date -u '+%Y-%m-%d %H:%M UTC') に実行"

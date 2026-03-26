@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>用語集 — 在サウジ邦人ポータル</title>
+<meta name="description" content="サウジ在住邦人向け用語・略語インデックス">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root { 
+  --sand:       #F4EDE0;
+  --sand-2:     #EDE4D2;
+  --sand-3:     #E2D6C0;
+  --ink:        #1C1410;
+  --ink-mid:    #4A3E30;
+  --ink-muted:  #9A8E7E;
+  --gold:       #8C6E3C;
+  --gold-pale:  rgba(140,110,60,0.12);
+  --green:      #1A4A2E;
+  --green-pale: rgba(26,74,46,0.08);
+  --red:        #8B2215;
+  --red-pale:   rgba(139,34,21,0.08);
+  --amber:      #7A5200;
+  --amber-pale: rgba(122,82,0,0.08);
+  --blue:       #1A3A6B;
+  --blue-pale:  rgba(26,58,107,0.08);
+  --border:     rgba(28,20,16,0.09);
+  --border-mid: rgba(28,20,16,0.15);
+  --radius:     10px;
+  --radius-sm:  6px;
+  --serif:      'Cormorant Garamond', 'Hiragino Mincho ProN', serif;
+  --body-serif: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  --sans:       'Noto Sans JP', -apple-system, 'Hiragino Sans', sans-serif;
+  --mono:       'SF Mono', 'Courier New', monospace;
+ }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--sand);color:var(--ink);font-family:var(--sans);
+  font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+.geo-stripe{height:3px;background:repeating-linear-gradient(90deg,
+  var(--gold) 0px,var(--gold) 3px,var(--sand-3) 3px,var(--sand-3) 5px,
+  var(--green) 5px,var(--green) 8px,var(--sand-3) 8px,var(--sand-3) 10px,
+  var(--gold) 10px,var(--gold) 13px,var(--sand) 13px,var(--sand) 18px);opacity:0.6}
+header{position:sticky;top:0;z-index:200;
+  background:rgba(244,237,224,0.88);
+  backdrop-filter:blur(20px) saturate(1.6);
+  -webkit-backdrop-filter:blur(20px) saturate(1.6);
+  border-bottom:0.5px solid var(--border)}
+.header-inner{max-width:1160px;margin:0 auto;padding:0 24px;height:56px;
+  display:flex;align-items:center;gap:24px}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-icon{width:30px;height:30px}
+.logo-ja{font-family:var(--body-serif);font-size:14px;color:var(--ink);letter-spacing:.02em}
+.logo-ar{font-family:var(--serif);font-size:11px;color:var(--gold);letter-spacing:.04em}
+nav.main-nav{display:flex;gap:2px;flex:1}
+nav.main-nav a{font-size:12px;color:var(--ink-muted);padding:5px 11px;
+  border-radius:99px;transition:all .15s ease-out;white-space:nowrap}
+nav.main-nav a:hover{color:var(--ink);background:var(--sand-2)}
+nav.main-nav a.active{background:var(--ink);color:var(--sand)}
+.last-update{font-size:10px;color:var(--ink-muted);flex-shrink:0}
+main{max-width:1160px;margin:0 auto;padding:28px 24px 60px}
+.section-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-muted);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.section-label::after{content:'';flex:1;height:0.5px;background:var(--border)}
+.badge{font-size:10px;padding:2px 8px;border-radius:3px;letter-spacing:.04em;
+  display:inline-flex;align-items:center;gap:4px}
+.badge-light-urgent{background:var(--red-pale);color:var(--red)}
+.badge-light-high{background:var(--amber-pale);color:var(--amber)}
+.badge-light-medium{background:var(--blue-pale);color:var(--blue)}
+.badge-light-cat{background:var(--gold-pale);color:var(--gold)}
+.badge-light-green{background:var(--green-pale);color:var(--green)}
+.tier-dot{width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block}
+.tier-1{background:var(--red)}
+.tier-2{background:var(--amber)}
+.tier-3{background:var(--blue)}
+.source-link{display:inline-flex;align-items:center;gap:4px;
+  color:var(--green);font-size:11px;
+  border-bottom:0.5px solid rgba(26,74,46,0.3);
+  transition:border-color .15s}
+.source-link:hover{border-color:var(--green)}
+footer{border-top:0.5px solid var(--border);padding:20px 24px}
+.footer-inner{max-width:1160px;margin:0 auto;display:flex;
+  justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-note{font-size:10px;color:var(--ink-muted);line-height:1.6}
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;
+  background:rgba(244,237,224,0.94);
+  backdrop-filter:blur(20px) saturate(1.6);
+  -webkit-backdrop-filter:blur(20px) saturate(1.6);
+  border-top:0.5px solid var(--border);
+  padding:8px 0 calc(8px + env(safe-area-inset-bottom));z-index:300}
+.mobile-nav-inner{display:grid;grid-template-columns:repeat(5,1fr)}
+.mob-tab{display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:4px 0;background:none;border:none;color:var(--ink-muted);font-size:10px}
+.mob-tab.active{color:var(--green)}
+.mob-tab svg{width:22px;height:22px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(max-width:600px){
+  .header-inner{height:44px;padding:0 16px}
+  .logo-ar{display:none}
+  nav.main-nav{display:none}
+  .last-update{display:none}
+  main{padding:16px 16px 100px}
+  .mobile-nav{display:block}
+  .geo-stripe{height:2px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <svg class="logo-icon" viewBox="0 0 30 30" fill="none">
+        <polygon points="15,2 17.9,10.6 27,10.6 19.6,15.8 22.5,24.5 15,19.3 7.5,24.5 10.4,15.8 3,10.6 12.1,10.6"
+          stroke="#8C6E3C" stroke-width="0.8" fill="none"/>
+        <circle cx="15" cy="15" r="4.5" stroke="#8C6E3C" stroke-width="0.6" fill="none"/>
+        <circle cx="15" cy="15" r="1.5" fill="#8C6E3C" opacity="0.4"/>
+      </svg>
+      <div>
+        <div class="logo-ja">在サウジ邦人ポータル</div>
+        <div class="logo-ar">في السعودية</div>
+      </div>
+    </a>
+    <nav class="main-nav"><a href="index.html" class="">すべて</a><a href="search.html" class="">検索</a><a href="glossary.html" class="active">用語集</a></nav>
+    <span class="last-update">更新 03/26 05:26</span>
+  </div>
+</header>
+<div class="geo-stripe"></div>
+<main style="max-width:800px;margin:0 auto;padding:28px 24px 60px">
+  <div class="section-label">アラビア語・略語・制度用語インデックス</div>
+
+  <div style="margin-bottom:20px">
+    <input id="gq" type="search" placeholder="用語を検索（例：iqama、ビザ、礼拝）"
+      style="width:100%;padding:10px 14px;border:0.5px solid var(--border-mid);
+        border-radius:var(--radius);font-size:14px;background:white;
+        color:var(--ink);font-family:var(--sans);outline:none;-webkit-appearance:none"
+      oninput="gSearch(this.value)"
+      onfocus="this.style.borderColor='var(--gold)'"
+      onblur="this.style.borderColor='var(--border-mid)'">
+  </div>
+
+  <div id="g-results" style="display:none;margin-bottom:24px"></div>
+  <div id="g-main">
+    
+<section style="margin-bottom:32px">
+  <div class="section-label">在留・ビザ</div>
+  
+<div id="tabiregis" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">たびレジ</span>
+    
+    <span style="font-size:11px;color:var(--ink-muted)">たびレジ</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">外務省の海外旅行者・在留者向け登録システム。安全情報をメールで受信できる。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">外務省が運営する「外務省海外旅行登録システム」の通称。海外在留・渡航の際に登録することで、緊急情報・安全情報をメールで受け取れる。短期渡航者も登録可能。在留邦人は「在留届」の提出とあわせてたびレジへの登録が推奨される。緊急時の安否確認にも活用される。</p>
+  
+  <div style="margin-top:8px"><a href="https://www.ezairyu.mofa.go.jp/tabireg/" target="_blank" rel="noopener" class="source-link">外務省 たびレジ で確認 ↗</a></div>
+</div>
+<div id="iqama" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">Iqama</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">إقامة</span>
+    <span style="font-size:11px;color:var(--ink-muted)">イカーマ</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">サウジアラビアの外国人居留許可証。就労・生活に必須。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">サウジアラビアで就労・居住する外国人に発行される居留許可証（在留カード）。雇用主がスポンサー（カフィール）となり申請する。有効期間は通常1年または2年で、更新が必要。各種行政手続き・銀行口座開設・SIM購入などすべての場面で必要となる。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#kafeel" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">kafeel</a> / <a href="#absher" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">absher</a> / <a href="#nitaqat" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">nitaqat</a></div>
+  <div style="margin-top:8px"><a href="https://www.hrsd.gov.sa/en" target="_blank" rel="noopener" class="source-link">HRSD で確認 ↗</a></div>
+</div>
+<div id="exit_reentry" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">Exit Re-Entry Visa</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">تأشيرة الخروج والعودة</span>
+    <span style="font-size:11px;color:var(--ink-muted)">イグジット・リエントリー・ビザ</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">サウジを一時出国し再入国するために必要な許可。iqama保持者が取得。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">iqama（居留許可）保持者がサウジを出国して再入国する際に必要なビザ許可。Absherアプリから申請可能。有効期間は通常6ヶ月または1年。家族帯同の場合は配偶者・子どもの分も別途申請が必要。期限切れのまま出国すると再入国に支障が出るため注意が必要。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#iqama" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">iqama</a> / <a href="#absher" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">absher</a> / <a href="#kafeel" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">kafeel</a></div>
+  <div style="margin-top:8px"><a href="https://www.absher.sa" target="_blank" rel="noopener" class="source-link">Absher公式 で確認 ↗</a></div>
+</div>
+<div id="kafeel" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">Kafeel / Kafala</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">كفيل / كفالة</span>
+    <span style="font-size:11px;color:var(--ink-muted)">カフィール / カファーラ</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">外国人労働者のスポンサーとなる雇用主・保証人制度。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">カファーラ制度は外国人労働者のスポンサーシップ制度。雇用主（カフィール）が労働者のビザ・iqama・出国許可を管理する。近年の改革（Vision 2030）により、一定条件下で雇用主の承認なしに転職できる制度が導入されつつある。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#iqama" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">iqama</a> / <a href="#exit_reentry" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">exit_reentry</a> / <a href="#hrsd" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">hrsd</a></div>
+  <div style="margin-top:8px"><a href="https://www.hrsd.gov.sa/en" target="_blank" rel="noopener" class="source-link">HRSD で確認 ↗</a></div>
+</div>
+</section>
+<section style="margin-bottom:32px">
+  <div class="section-label">宗教・文化</div>
+  
+<div id="adhan" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">Adhan（アザーン）</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">الأذان</span>
+    <span style="font-size:11px;color:var(--ink-muted)">アザーン</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">礼拝の時刻を告げるイスラームの呼びかけ。モスクのスピーカーから流れる。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">礼拝（サラート）の時刻に、ムアッジン（礼拝呼びかけ人）がモスクから発する呼びかけ。「アッラーフ・アクバル（神は偉大なり）」の言葉で始まる。サウジではモスクのスピーカーから周辺に大音量で流れるため、在留外国人もすぐに慣れる。1日5回、礼拝の数分〜十数分前に流れる。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#fajr" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">fajr</a> / <a href="#dhuhr" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">dhuhr</a> / <a href="#asr" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">asr</a> / <a href="#maghrib" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">maghrib</a> / <a href="#isha" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">isha</a></div>
+  
+</div>
+<div id="asr" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">Asr（アスル）</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">العصر</span>
+    <span style="font-size:11px;color:var(--ink-muted)">アスル</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">午後中頃の礼拝。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">1日5回の礼拝のうち3番目。太陽が西に傾いた午後中頃（概ね午後3〜4時台）に行われる。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#fajr" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">fajr</a> / <a href="#dhuhr" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">dhuhr</a> / <a href="#maghrib" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">maghrib</a> / <a href="#isha" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">isha</a></div>
+  
+</div>
+<div id="isha" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">Isha（イシャー）</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">العشاء</span>
+    <span style="font-size:11px;color:var(--ink-muted)">イシャー</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">夜の礼拝。1日5回の礼拝のうち最後のもの。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">1日5回の礼拝のうち5番目で最後のもの。夜（概ね日没後1.5〜2時間）に行われる。ラマダーン中は夜の活動が活発になるため、イシャー後も多くの商店が深夜まで営業することが多い。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#fajr" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">fajr</a> / <a href="#dhuhr" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">dhuhr</a> / <a href="#asr" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">asr</a> / <a href="#maghrib" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">maghrib</a> / <a href="#adhan" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">adhan</a></div>
+  
+</div>
+<div id="juma" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">Juma（ジュムア）</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">الجمعة</span>
+    <span style="font-size:11px;color:var(--ink-muted)">ジュムア</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">金曜日。イスラームの集団礼拝の日。多くの企業・官公庁が休日。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">アラビア語で「金曜日」を意味し、イスラームにおいて特別な集団礼拝（サラートゥル・ジュムア）が行われる聖なる曜日。サウジアラビアの週末は金曜・土曜。官公庁・多くの企業はこの曜日が休日。外国人も金曜の礼拝時間帯（正午頃）はショッピングモールの一時閉店など影響を受ける。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#adhan" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">adhan</a> / <a href="#fajr" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">fajr</a></div>
+  
+</div>
+<div id="dhuhr" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">Dhuhr（ドゥフル）</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">الظهر</span>
+    <span style="font-size:11px;color:var(--ink-muted)">ドゥフル</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">正午（太陽が頂点を過ぎた直後）の礼拝。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">1日5回の礼拝のうち2番目。太陽が天頂を過ぎた直後（概ね正午〜午後1時）に行われる。ビジネスアワーに重なるため、多くのショッピングモール・レストランが一時的に短縮営業または閉店する。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#fajr" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">fajr</a> / <a href="#asr" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">asr</a> / <a href="#maghrib" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">maghrib</a> / <a href="#isha" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">isha</a></div>
+  
+</div>
+<div id="haram" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">Haram（ハラーム）</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">حرام</span>
+    <span style="font-size:11px;color:var(--ink-muted)">ハラーム</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">イスラーム法で禁じられたもの。豚肉・アルコールなどが代表例。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">アラビア語で「禁じられたもの・違法なもの」を意味する。食品では豚肉・アルコールが代表的。行為としては賭博・婚前交渉・偶像崇拝なども含まれる。在留外国人はサウジの法律の下でこれらの禁止事項に従う義務があり、違反した場合は法的制裁の対象となることがある。「ハラーム」と「聖域（マッカ・マディーナ）」は同じ語根だが異なる文脈で使用される。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#halal" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">halal</a></div>
+  
+</div>
+<div id="halal" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">Halal（ハラール）</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">حلال</span>
+    <span style="font-size:11px;color:var(--ink-muted)">ハラール</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">イスラーム法で許されたもの。食品・飲料・行為などに使われる。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">アラビア語で「許されたもの・合法なもの」を意味する。食品では豚肉・アルコールを含まず、イスラームの規定に従って屠畜された肉（ザビーハ）であることが条件。サウジではほぼ全ての食品がハラール対応だが、輸入食品の成分表示確認は重要。アルコール飲料はサウジ国内で法律により販売・消費が禁止されている。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#haram" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">haram</a></div>
+  
+</div>
+<div id="fajr" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">Fajr（ファジュル）</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">الفجر</span>
+    <span style="font-size:11px;color:var(--ink-muted)">ファジュル</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">夜明け前の礼拝。1日5回の礼拝のうち最初のもの。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">イスラームの1日5回の義務礼拝（サラート）のうち最初のもの。夜明け（サブフ）前の薄明かりの時間帯に行われる。時刻は日の出前約1〜1.5時間で、季節・緯度によって変動する。ラマダーン月中は特に重要な礼拝の一つ。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#dhuhr" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">dhuhr</a> / <a href="#asr" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">asr</a> / <a href="#maghrib" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">maghrib</a> / <a href="#isha" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">isha</a> / <a href="#adhan" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">adhan</a></div>
+  
+</div>
+<div id="maghrib" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">Maghrib（マグリブ）</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">المغرب</span>
+    <span style="font-size:11px;color:var(--ink-muted)">マグリブ</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">日没直後の礼拝。ラマダーン中はイフタール（断食明け）の合図。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">1日5回の礼拝のうち4番目。日没直後に行われる。ラマダーン（断食月）中は、マグリブのアザーン（礼拝の呼びかけ）がイフタール（iftār / إفطار：断食明けの食事）の開始合図となる。この時間帯は交通渋滞が激増するため注意が必要。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#fajr" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">fajr</a> / <a href="#dhuhr" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">dhuhr</a> / <a href="#asr" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">asr</a> / <a href="#isha" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">isha</a> / <a href="#adhan" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">adhan</a> / <a href="#iftar" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">iftar</a></div>
+  
+</div>
+</section>
+<section style="margin-bottom:32px">
+  <div class="section-label">行政・手続き</div>
+  
+<div id="absher" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">Absher</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">أبشر</span>
+    <span style="font-size:11px;color:var(--ink-muted)">アブシェル</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">サウジ政府の統合電子行政サービスアプリ。iqama・出国許可などを管理。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">サウジアラビア内務省が運営するオンライン行政サービスプラットフォーム。スマートフォンアプリ（iOS/Android）でiqama更新・出国・再入国許可申請・家族の移動管理・運転免許更新などが行える。外国人労働者にとって最も重要な行政アプリ。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#iqama" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">iqama</a> / <a href="#exit_reentry" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">exit_reentry</a> / <a href="#mol" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">mol</a></div>
+  <div style="margin-top:8px"><a href="https://www.absher.sa" target="_blank" rel="noopener" class="source-link">Absher公式 で確認 ↗</a></div>
+</div>
+<div id="gov_sa" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">GOV.SA</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">بوابة الحكومة</span>
+    <span style="font-size:11px;color:var(--ink-muted)">ガバメントドットエスエー</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">サウジ政府統合デジタルポータル。各省庁への入口。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">Saudi Arabia&#x27;s Government Services Portal（サウジアラビア政府サービスポータル）。各省庁の電子サービスへの統合入口で、ビザ・在留・健康・教育・ビジネス登録など幅広いサービスにアクセスできる。デジタル政府庁（DGA）が運営。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#absher" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">absher</a> / <a href="#sehhaty" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">sehhaty</a> / <a href="#misa" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">misa</a></div>
+  <div style="margin-top:8px"><a href="https://www.gov.sa/en" target="_blank" rel="noopener" class="source-link">GOV.SA公式 で確認 ↗</a></div>
+</div>
+<div id="sehhaty" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">Sehhaty</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">سهاتي</span>
+    <span style="font-size:11px;color:var(--ink-muted)">セハティ</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">保健省の公式医療予約・健康記録アプリ。外国人も利用可能。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">MOH（保健省）が運営するデジタル医療プラットフォーム。「私の健康」を意味するアラビア語。医療機関の予約・処方箋の更新・検査結果の確認・ワクチン接種記録の閲覧が可能。iqama番号またはパスポート番号でアカウント登録できる。日本語インターフェースにも対応済み（2026年〜）。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#moh" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">moh</a> / <a href="#absher" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">absher</a></div>
+  <div style="margin-top:8px"><a href="https://www.moh.gov.sa/en/eServices/Sehhaty/Pages/default.aspx" target="_blank" rel="noopener" class="source-link">MOH / Sehhaty で確認 ↗</a></div>
+</div>
+</section>
+<section style="margin-bottom:32px">
+  <div class="section-label">労働・ビジネス</div>
+  
+<div id="rhq" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">RHQ</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">المقر الإقليمي</span>
+    <span style="font-size:11px;color:var(--ink-muted)">アールエイチキュー</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">地域本部。外国企業がサウジに設置する中東・アフリカ統括拠点。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">Regional Headquarters（地域本部）の略称。Vision 2030の一環としてサウジ政府が外国多国籍企業に対し、中東・アフリカ地域の統括機能をリヤドに置くよう促す制度。RHQ設置企業には税制優遇・ビザ特例などのインセンティブが与えられる。多くの日系企業が検討・設置済み。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#misa" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">misa</a> / <a href="#vision2030" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">vision2030</a></div>
+  <div style="margin-top:8px"><a href="https://rhq.misa.gov.sa" target="_blank" rel="noopener" class="source-link">MISA RHQポータル で確認 ↗</a></div>
+</div>
+<div id="nitaqat" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">Nitaqat / Saudization</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">نطاقات / سعودة</span>
+    <span style="font-size:11px;color:var(--ink-muted)">ニタカット / サウダイゼーション</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">企業にサウジ人雇用の一定比率を義務付ける制度。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">HRSDが運営する企業別サウジ人雇用義務率（Saudization）の管理制度。企業は雇用するサウジ人の比率によってPlatinum・Green・Yellow・Redのゾーンに分類され、ゾーンによって新規iqama申請や政府サービスへのアクセスが制限される。Vision 2030の目標達成に向け、業種別の比率が継続的に改定されている。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#hrsd" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">hrsd</a> / <a href="#mol" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">mol</a> / <a href="#vision2030" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">vision2030</a></div>
+  <div style="margin-top:8px"><a href="https://www.hrsd.gov.sa/en" target="_blank" rel="noopener" class="source-link">HRSD で確認 ↗</a></div>
+</div>
+</section>
+<section style="margin-bottom:32px">
+  <div class="section-label">省庁・機関</div>
+  
+<div id="hrsd" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">HRSD</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">وزارة الموارد البشرية والتنمية الاجتماعية</span>
+    <span style="font-size:11px;color:var(--ink-muted)">エイチアールエスディー</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">人的資源・社会開発省。労働・雇用・外国人在留関連の主管省庁。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">Ministry of Human Resources and Social Development（人的資源・社会開発省）の略称。外国人労働者の雇用規制・iqama管理・Nitaqat制度・労働争議などを所管する。日系企業が最も頻繁にやりとりする省庁の一つ。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#nitaqat" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">nitaqat</a> / <a href="#mol" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">mol</a> / <a href="#iqama" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">iqama</a></div>
+  <div style="margin-top:8px"><a href="https://www.hrsd.gov.sa/en" target="_blank" rel="noopener" class="source-link">HRSD公式 で確認 ↗</a></div>
+</div>
+<div id="moh" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">MOH</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">وزارة الصحة</span>
+    <span style="font-size:11px;color:var(--ink-muted)">エムオーエイチ</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">保健省。Sehhatyアプリを運営し、公衆衛生・感染症情報を管轄。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">Ministry of Health（保健省）の略称。公衆衛生政策・医療機関の監督・ワクチン接種プログラム・感染症情報の発出などを担う。運営するSehhatyアプリ（سهاتي）は外国人も利用可能な医療予約・健康記録プラットフォーム。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#sehhaty" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">sehhaty</a> / <a href="#misa" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">misa</a> / <a href="#gov_sa" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">gov_sa</a></div>
+  <div style="margin-top:8px"><a href="https://www.moh.gov.sa/en" target="_blank" rel="noopener" class="source-link">MOH公式 で確認 ↗</a></div>
+</div>
+<div id="mol" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">MOL</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">وزارة العمل</span>
+    <span style="font-size:11px;color:var(--ink-muted)">エムオーエル</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">労働省（現HRSDに統合）。労働許可・就労ビザを所管。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">Ministry of Labour（労働省）の旧称。現在はHRSD（人的資源・社会開発省）に統合されているが、就労ビザ申請システム（MOLポータル）の名称として引き続き使用されることが多い。雇用主は同ポータルを通じて外国人労働者の就労許可を申請・管理する。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#hrsd" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">hrsd</a> / <a href="#iqama" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">iqama</a> / <a href="#nitaqat" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">nitaqat</a></div>
+  <div style="margin-top:8px"><a href="https://www.hrsd.gov.sa/en" target="_blank" rel="noopener" class="source-link">HRSD公式 で確認 ↗</a></div>
+</div>
+<div id="gazt" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">GAZT / ZATCA</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">هيئة الزكاة والضريبة والجمارك</span>
+    <span style="font-size:11px;color:var(--ink-muted)">ガズト / ザトカ</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">ザカート・税・関税庁。VAT（付加価値税）・法人税を所管。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">Zakat, Tax and Customs Authority（ザカート・税・関税庁）の略称。旧称はGAZT（General Authority of Zakat and Tax）。サウジのVAT（付加価値税、現行15%）・法人税・源泉税・関税などを所管。企業は四半期ごとにVAT申告義務があり、外国人個人の税負担は原則なし（所得税なし）だが、就労許可関連手数料は課税対象となることがある。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#vision2030" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">vision2030</a></div>
+  <div style="margin-top:8px"><a href="https://zatca.gov.sa/en" target="_blank" rel="noopener" class="source-link">ZATCA公式 で確認 ↗</a></div>
+</div>
+<div id="misa" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">MISA</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">وزارة الاستثمار</span>
+    <span style="font-size:11px;color:var(--ink-muted)">ミサ</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">投資省。外国直接投資・RHQ制度・リロケーションポータルを所管。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">Ministry of Investment Saudi Arabia（投資省）の略称。外国企業の誘致・投資ライセンス発行・地域本部（RHQ）制度の運営を担う。MISAが運営するRelocation Journey（rhq.misa.gov.sa）は外国人専門職・投資家向けの生活情報ポータル。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#rhq" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">rhq</a> / <a href="#vision2030" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">vision2030</a> / <a href="#gov_sa" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">gov_sa</a></div>
+  <div style="margin-top:8px"><a href="https://misa.gov.sa/en" target="_blank" rel="noopener" class="source-link">MISA公式 で確認 ↗</a></div>
+</div>
+</section>
+<section style="margin-bottom:32px">
+  <div class="section-label">生活・経済</div>
+  
+<div id="sar" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">SAR</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">ريال سعودي</span>
+    <span style="font-size:11px;color:var(--ink-muted)">エスエーアール / サウジリヤル</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">サウジアラビア・リヤル。通貨単位。1SAR≒40〜42円（変動）。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">Saudi Arabian Riyal（サウジアラビア・リヤル）の略称。通貨記号はSR または ﷼。米ドルに対して長年固定レート（1USD = 3.75SAR）を維持しているため、円ドルレートに連動して円換算額が変動する。補助通貨はハララー（1SAR = 100ハララー）。</p>
+  
+  
+</div>
+<div id="vat" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">VAT</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">ضريبة القيمة المضافة</span>
+    <span style="font-size:11px;color:var(--ink-muted)">ブイエーティー / 付加価値税</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">付加価値税。サウジでは2020年より15%。ほぼ全ての購入に課税。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">Value Added Tax（付加価値税）。サウジアラビアは2018年に5%で導入し、2020年7月から15%に引き上げた。食料品・医薬品・教育・金融サービスなど一部は非課税または低税率の例外あり。レシートには「VAT番号」と税額が明記されており、法人は四半期ごとにZATCAへ申告義務がある。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#gazt" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">gazt</a> / <a href="#zatca" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">zatca</a></div>
+  <div style="margin-top:8px"><a href="https://zatca.gov.sa/en" target="_blank" rel="noopener" class="source-link">ZATCA公式 で確認 ↗</a></div>
+</div>
+</section>
+<section style="margin-bottom:32px">
+  <div class="section-label">日本人コミュニティ</div>
+  
+<div id="jacci" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">JACCI</span>
+    
+    <span style="font-size:11px;color:var(--ink-muted)">ジャッチ</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">日本商工会議所リヤド。在留日本人ビジネスパーソンの主要団体。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">Japan Chamber of Commerce and Industry in Saudi Arabia（在サウジアラビア日本商工会議所）の略称。リヤドに拠点を置き、在留日本人ビジネスパーソン・企業のネットワーク形成・情報共有・セミナー開催などを行う。会員向けにビジネス規制変更などの情報提供も実施。</p>
+  
+  <div style="margin-top:8px"><a href="https://jacci.or.jp" target="_blank" rel="noopener" class="source-link">JACCI公式 で確認 ↗</a></div>
+</div>
+</section>
+<section style="margin-bottom:32px">
+  <div class="section-label">政策・制度</div>
+  
+<div id="neom" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">NEOM</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">نيوم</span>
+    <span style="font-size:11px;color:var(--ink-muted)">ネオム</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">タブーク州北西部に建設中の未来型スマートシティ・メガプロジェクト。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">Vision 2030の旗艦プロジェクト。タブーク州北西部の紅海沿岸に建設中の超大型都市開発。「THE LINE（一直線の都市）」「SINDALAH（紅海リゾート島）」「OXAGON（浮体式工業港）」などの構成プロジェクトを含む。日系建設・インフラ企業が多数受注しており、関連在留者が増加している。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#vision2030" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">vision2030</a> / <a href="#misa" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">misa</a></div>
+  <div style="margin-top:8px"><a href="https://www.neom.com" target="_blank" rel="noopener" class="source-link">NEOM公式 で確認 ↗</a></div>
+</div>
+<div id="vision2030" style="padding:16px 0;border-bottom:0.5px solid var(--border)">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+    <span style="font-family:var(--body-serif);font-size:16px;font-weight:400;color:var(--ink)">Vision 2030</span>
+    <span style="font-family:var(--serif);font-size:15px;color:var(--gold);font-style:italic">رؤية 2030</span>
+    <span style="font-size:11px;color:var(--ink-muted)">ビジョン2030</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px">ムハンマド皇太子主導のサウジ経済多角化・改革ロードマップ。</p>
+  <p style="font-size:13px;color:var(--ink-mid);line-height:1.75">ムハンマド・ビン・サルマーン皇太子（MBS）が2016年に発表した国家変革プログラム。石油依存経済からの脱却・非石油GDP比率の引き上げ・国民雇用の拡大・観光・エンタメ・テクノロジー分野の育成を柱とする。Saudization率の変更・RHQ制度・NEOM建設など、在留邦人の生活・ビジネスに直接影響する政策変更の多くがこの枠組みに由来する。</p>
+  <div style="margin-top:8px;font-size:11px;color:var(--ink-muted)">関連: <a href="#rhq" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">rhq</a> / <a href="#misa" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">misa</a> / <a href="#nitaqat" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">nitaqat</a> / <a href="#neom" style="color:var(--gold);border-bottom:0.5px solid rgba(140,110,60,.3)">neom</a></div>
+  <div style="margin-top:8px"><a href="https://www.vision2030.gov.sa" target="_blank" rel="noopener" class="source-link">Vision 2030公式 で確認 ↗</a></div>
+</div>
+</section>
+  </div>
+</main>
+
+<script>
+const GDATA = [{"id": "iqama", "term": "Iqama", "term_ar": "إقامة", "reading": "イカーマ", "short": "サウジアラビアの外国人居留許可証。就労・生活に必須。", "category": "在留・ビザ"}, {"id": "kafeel", "term": "Kafeel / Kafala", "term_ar": "كفيل / كفالة", "reading": "カフィール / カファーラ", "short": "外国人労働者のスポンサーとなる雇用主・保証人制度。", "category": "在留・ビザ"}, {"id": "absher", "term": "Absher", "term_ar": "أبشر", "reading": "アブシェル", "short": "サウジ政府の統合電子行政サービスアプリ。iqama・出国許可などを管理。", "category": "行政・手続き"}, {"id": "exit_reentry", "term": "Exit Re-Entry Visa", "term_ar": "تأشيرة الخروج والعودة", "reading": "イグジット・リエントリー・ビザ", "short": "サウジを一時出国し再入国するために必要な許可。iqama保持者が取得。", "category": "在留・ビザ"}, {"id": "nitaqat", "term": "Nitaqat / Saudization", "term_ar": "نطاقات / سعودة", "reading": "ニタカット / サウダイゼーション", "short": "企業にサウジ人雇用の一定比率を義務付ける制度。", "category": "労働・ビジネス"}, {"id": "hrsd", "term": "HRSD", "term_ar": "وزارة الموارد البشرية والتنمية الاجتماعية", "reading": "エイチアールエスディー", "short": "人的資源・社会開発省。労働・雇用・外国人在留関連の主管省庁。", "category": "省庁・機関"}, {"id": "mol", "term": "MOL", "term_ar": "وزارة العمل", "reading": "エムオーエル", "short": "労働省（現HRSDに統合）。労働許可・就労ビザを所管。", "category": "省庁・機関"}, {"id": "moh", "term": "MOH", "term_ar": "وزارة الصحة", "reading": "エムオーエイチ", "short": "保健省。Sehhatyアプリを運営し、公衆衛生・感染症情報を管轄。", "category": "省庁・機関"}, {"id": "sehhaty", "term": "Sehhaty", "term_ar": "سهاتي", "reading": "セハティ", "short": "保健省の公式医療予約・健康記録アプリ。外国人も利用可能。", "category": "行政・手続き"}, {"id": "misa", "term": "MISA", "term_ar": "وزارة الاستثمار", "reading": "ミサ", "short": "投資省。外国直接投資・RHQ制度・リロケーションポータルを所管。", "category": "省庁・機関"}, {"id": "rhq", "term": "RHQ", "term_ar": "المقر الإقليمي", "reading": "アールエイチキュー", "short": "地域本部。外国企業がサウジに設置する中東・アフリカ統括拠点。", "category": "労働・ビジネス"}, {"id": "vision2030", "term": "Vision 2030", "term_ar": "رؤية 2030", "reading": "ビジョン2030", "short": "ムハンマド皇太子主導のサウジ経済多角化・改革ロードマップ。", "category": "政策・制度"}, {"id": "neom", "term": "NEOM", "term_ar": "نيوم", "reading": "ネオム", "short": "タブーク州北西部に建設中の未来型スマートシティ・メガプロジェクト。", "category": "政策・制度"}, {"id": "gazt", "term": "GAZT / ZATCA", "term_ar": "هيئة الزكاة والضريبة والجمارك", "reading": "ガズト / ザトカ", "short": "ザカート・税・関税庁。VAT（付加価値税）・法人税を所管。", "category": "省庁・機関"}, {"id": "gov_sa", "term": "GOV.SA", "term_ar": "بوابة الحكومة", "reading": "ガバメントドットエスエー", "short": "サウジ政府統合デジタルポータル。各省庁への入口。", "category": "行政・手続き"}, {"id": "fajr", "term": "Fajr（ファジュル）", "term_ar": "الفجر", "reading": "ファジュル", "short": "夜明け前の礼拝。1日5回の礼拝のうち最初のもの。", "category": "宗教・文化"}, {"id": "dhuhr", "term": "Dhuhr（ドゥフル）", "term_ar": "الظهر", "reading": "ドゥフル", "short": "正午（太陽が頂点を過ぎた直後）の礼拝。", "category": "宗教・文化"}, {"id": "asr", "term": "Asr（アスル）", "term_ar": "العصر", "reading": "アスル", "short": "午後中頃の礼拝。", "category": "宗教・文化"}, {"id": "maghrib", "term": "Maghrib（マグリブ）", "term_ar": "المغرب", "reading": "マグリブ", "short": "日没直後の礼拝。ラマダーン中はイフタール（断食明け）の合図。", "category": "宗教・文化"}, {"id": "isha", "term": "Isha（イシャー）", "term_ar": "العشاء", "reading": "イシャー", "short": "夜の礼拝。1日5回の礼拝のうち最後のもの。", "category": "宗教・文化"}, {"id": "adhan", "term": "Adhan（アザーン）", "term_ar": "الأذان", "reading": "アザーン", "short": "礼拝の時刻を告げるイスラームの呼びかけ。モスクのスピーカーから流れる。", "category": "宗教・文化"}, {"id": "juma", "term": "Juma（ジュムア）", "term_ar": "الجمعة", "reading": "ジュムア", "short": "金曜日。イスラームの集団礼拝の日。多くの企業・官公庁が休日。", "category": "宗教・文化"}, {"id": "halal", "term": "Halal（ハラール）", "term_ar": "حلال", "reading": "ハラール", "short": "イスラーム法で許されたもの。食品・飲料・行為などに使われる。", "category": "宗教・文化"}, {"id": "haram", "term": "Haram（ハラーム）", "term_ar": "حرام", "reading": "ハラーム", "short": "イスラーム法で禁じられたもの。豚肉・アルコールなどが代表例。", "category": "宗教・文化"}, {"id": "sar", "term": "SAR", "term_ar": "ريال سعودي", "reading": "エスエーアール / サウジリヤル", "short": "サウジアラビア・リヤル。通貨単位。1SAR≒40〜42円（変動）。", "category": "生活・経済"}, {"id": "vat", "term": "VAT", "term_ar": "ضريبة القيمة المضافة", "reading": "ブイエーティー / 付加価値税", "short": "付加価値税。サウジでは2020年より15%。ほぼ全ての購入に課税。", "category": "生活・経済"}, {"id": "jacci", "term": "JACCI", "term_ar": null, "reading": "ジャッチ", "short": "日本商工会議所リヤド。在留日本人ビジネスパーソンの主要団体。", "category": "日本人コミュニティ"}, {"id": "tabiregis", "term": "たびレジ", "term_ar": null, "reading": "たびレジ", "short": "外務省の海外旅行者・在留者向け登録システム。安全情報をメールで受信できる。", "category": "在留・ビザ"}];
+
+function gSearch(raw) {
+  const q  = raw.trim().toLowerCase();
+  const rm = document.getElementById('g-results');
+  const gm = document.getElementById('g-main');
+  if (!q) { rm.style.display='none'; gm.style.display=''; return; }
+  const hits = GDATA.filter(t =>
+    t.term.toLowerCase().includes(q) ||
+    (t.term_ar||'').includes(q) ||
+    (t.reading||'').toLowerCase().includes(q) ||
+    t.short.toLowerCase().includes(q)
+  );
+  rm.style.display = '';
+  gm.style.display = 'none';
+  rm.innerHTML = hits.length
+    ? hits.map(t =>
+        `<div style="padding:12px 0;border-bottom:0.5px solid var(--border)">
+          <a href="#${t.id}" onclick="clearSearch()" style="display:block">
+            <span style="font-family:var(--body-serif);font-size:15px;color:var(--ink)">${t.term}</span>
+            ${t.term_ar ? `<span style="font-family:serif;font-size:13px;color:var(--gold);margin-left:8px">${t.term_ar}</span>` : ''}
+            <span style="font-size:11px;color:var(--ink-muted);margin-left:6px">${t.reading}</span>
+          </a>
+          <p style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-top:3px">${t.short}</p>
+        </div>`
+      ).join('')
+    : '<p style="color:var(--ink-muted);font-size:13px;padding:16px 0">該当する用語が見つかりませんでした。</p>';
+}
+function clearSearch() {
+  document.getElementById('gq').value = '';
+  document.getElementById('g-results').style.display = 'none';
+  document.getElementById('g-main').style.display = '';
+}
+</script><nav class="mobile-nav"><div class="mobile-nav-inner"><a class="mob-tab " href="index.html"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="12" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="12" width="7" height="7" rx="1.5"/><rect x="12" y="12" width="7" height="7" rx="1.5"/></svg><span style="font-size:9px">すべて</span></a><a class="mob-tab " href="search.html"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><line x1="15.5" y1="15.5" x2="19" y2="19"/></svg><span style="font-size:9px">検索</span></a><a class="mob-tab active" href="glossary.html"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M4 4h14v14H4z" rx="2"/><line x1="7" y1="8" x2="15" y2="8"/><line x1="7" y1="12" x2="12" y2="12"/></svg><span style="font-size:9px">用語集</span></a><a class="mob-tab " href="index.html#safety"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="11" y1="7" x2="11" y2="11"/><circle cx="11" cy="15" r="0.8" fill="currentColor" stroke="none"/></svg><span style="font-size:9px">安全</span></a><a class="mob-tab " href="index.html#visa"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="5" y="2" width="12" height="18" rx="2"/><line x1="8" y1="7" x2="14" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg><span style="font-size:9px">ビザ</span></a></div></nav>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-note">
+      © 2026 在サウジ邦人ポータル — 掲載情報は参考目的です。<br>
+      重要な判断は必ず原典（情報源リンク）および公式機関でご確認ください。
+    </div>
+    <div class="footer-note">AIエージェントによる自動収集 + 編集部による精査</div>
+  </div>
+</footer></body></html>

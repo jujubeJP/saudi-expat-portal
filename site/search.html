@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>過去記事検索 — 在サウジ邦人ポータル</title>
+<meta name="description" content="サウジ在住邦人ポータル — 記事検索">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root { 
+  --sand:       #F4EDE0;
+  --sand-2:     #EDE4D2;
+  --sand-3:     #E2D6C0;
+  --ink:        #1C1410;
+  --ink-mid:    #4A3E30;
+  --ink-muted:  #9A8E7E;
+  --gold:       #8C6E3C;
+  --gold-pale:  rgba(140,110,60,0.12);
+  --green:      #1A4A2E;
+  --green-pale: rgba(26,74,46,0.08);
+  --red:        #8B2215;
+  --red-pale:   rgba(139,34,21,0.08);
+  --amber:      #7A5200;
+  --amber-pale: rgba(122,82,0,0.08);
+  --blue:       #1A3A6B;
+  --blue-pale:  rgba(26,58,107,0.08);
+  --border:     rgba(28,20,16,0.09);
+  --border-mid: rgba(28,20,16,0.15);
+  --radius:     10px;
+  --radius-sm:  6px;
+  --serif:      'Cormorant Garamond', 'Hiragino Mincho ProN', serif;
+  --body-serif: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  --sans:       'Noto Sans JP', -apple-system, 'Hiragino Sans', sans-serif;
+  --mono:       'SF Mono', 'Courier New', monospace;
+ }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--sand);color:var(--ink);font-family:var(--sans);
+  font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+.geo-stripe{height:3px;background:repeating-linear-gradient(90deg,
+  var(--gold) 0px,var(--gold) 3px,var(--sand-3) 3px,var(--sand-3) 5px,
+  var(--green) 5px,var(--green) 8px,var(--sand-3) 8px,var(--sand-3) 10px,
+  var(--gold) 10px,var(--gold) 13px,var(--sand) 13px,var(--sand) 18px);opacity:0.6}
+header{position:sticky;top:0;z-index:200;
+  background:rgba(244,237,224,0.88);
+  backdrop-filter:blur(20px) saturate(1.6);
+  -webkit-backdrop-filter:blur(20px) saturate(1.6);
+  border-bottom:0.5px solid var(--border)}
+.header-inner{max-width:1160px;margin:0 auto;padding:0 24px;height:56px;
+  display:flex;align-items:center;gap:24px}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-icon{width:30px;height:30px}
+.logo-ja{font-family:var(--body-serif);font-size:14px;color:var(--ink);letter-spacing:.02em}
+.logo-ar{font-family:var(--serif);font-size:11px;color:var(--gold);letter-spacing:.04em}
+nav.main-nav{display:flex;gap:2px;flex:1}
+nav.main-nav a{font-size:12px;color:var(--ink-muted);padding:5px 11px;
+  border-radius:99px;transition:all .15s ease-out;white-space:nowrap}
+nav.main-nav a:hover{color:var(--ink);background:var(--sand-2)}
+nav.main-nav a.active{background:var(--ink);color:var(--sand)}
+.last-update{font-size:10px;color:var(--ink-muted);flex-shrink:0}
+main{max-width:1160px;margin:0 auto;padding:28px 24px 60px}
+.section-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-muted);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.section-label::after{content:'';flex:1;height:0.5px;background:var(--border)}
+.badge{font-size:10px;padding:2px 8px;border-radius:3px;letter-spacing:.04em;
+  display:inline-flex;align-items:center;gap:4px}
+.badge-light-urgent{background:var(--red-pale);color:var(--red)}
+.badge-light-high{background:var(--amber-pale);color:var(--amber)}
+.badge-light-medium{background:var(--blue-pale);color:var(--blue)}
+.badge-light-cat{background:var(--gold-pale);color:var(--gold)}
+.badge-light-green{background:var(--green-pale);color:var(--green)}
+.tier-dot{width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block}
+.tier-1{background:var(--red)}
+.tier-2{background:var(--amber)}
+.tier-3{background:var(--blue)}
+.source-link{display:inline-flex;align-items:center;gap:4px;
+  color:var(--green);font-size:11px;
+  border-bottom:0.5px solid rgba(26,74,46,0.3);
+  transition:border-color .15s}
+.source-link:hover{border-color:var(--green)}
+footer{border-top:0.5px solid var(--border);padding:20px 24px}
+.footer-inner{max-width:1160px;margin:0 auto;display:flex;
+  justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-note{font-size:10px;color:var(--ink-muted);line-height:1.6}
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;
+  background:rgba(244,237,224,0.94);
+  backdrop-filter:blur(20px) saturate(1.6);
+  -webkit-backdrop-filter:blur(20px) saturate(1.6);
+  border-top:0.5px solid var(--border);
+  padding:8px 0 calc(8px + env(safe-area-inset-bottom));z-index:300}
+.mobile-nav-inner{display:grid;grid-template-columns:repeat(5,1fr)}
+.mob-tab{display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:4px 0;background:none;border:none;color:var(--ink-muted);font-size:10px}
+.mob-tab.active{color:var(--green)}
+.mob-tab svg{width:22px;height:22px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(max-width:600px){
+  .header-inner{height:44px;padding:0 16px}
+  .logo-ar{display:none}
+  nav.main-nav{display:none}
+  .last-update{display:none}
+  main{padding:16px 16px 100px}
+  .mobile-nav{display:block}
+  .geo-stripe{height:2px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <svg class="logo-icon" viewBox="0 0 30 30" fill="none">
+        <polygon points="15,2 17.9,10.6 27,10.6 19.6,15.8 22.5,24.5 15,19.3 7.5,24.5 10.4,15.8 3,10.6 12.1,10.6"
+          stroke="#8C6E3C" stroke-width="0.8" fill="none"/>
+        <circle cx="15" cy="15" r="4.5" stroke="#8C6E3C" stroke-width="0.6" fill="none"/>
+        <circle cx="15" cy="15" r="1.5" fill="#8C6E3C" opacity="0.4"/>
+      </svg>
+      <div>
+        <div class="logo-ja">在サウジ邦人ポータル</div>
+        <div class="logo-ar">في السعودية</div>
+      </div>
+    </a>
+    <nav class="main-nav"><a href="index.html" class="">すべて</a><a href="search.html" class="active">検索</a><a href="glossary.html" class="">用語集</a></nav>
+    <span class="last-update">更新 03/26 05:26</span>
+  </div>
+</header>
+<div class="geo-stripe"></div>
+<main>
+  <div class="section-label">過去記事を検索</div>
+
+  <div style="display:flex;gap:8px;margin-bottom:20px">
+    <input id="q" type="search" placeholder="キーワード（例：iqama、ビザ、医療）"
+      style="flex:1;padding:10px 14px;border:0.5px solid var(--border-mid);
+        border-radius:var(--radius);font-size:14px;background:white;
+        color:var(--ink);font-family:var(--sans);outline:none;
+        -webkit-appearance:none"
+      oninput="doSearch(this.value)"
+      onfocus="this.style.borderColor='var(--gold)'"
+      onblur="this.style.borderColor='var(--border-mid)'">
+    <select id="catFilter" onchange="doSearch(document.getElementById('q').value)"
+      style="padding:10px 12px;border:0.5px solid var(--border-mid);
+        border-radius:var(--radius);font-size:12px;background:white;
+        color:var(--ink-mid);font-family:var(--sans);outline:none;-webkit-appearance:none">
+      <option value="">すべてのカテゴリ</option>
+      <option value="安全・治安">安全・治安</option>
+      <option value="ビザ・在留">ビザ・在留</option>
+      <option value="医療・健康">医療・健康</option>
+      <option value="ビジネス">ビジネス</option>
+      <option value="生活">生活</option>
+      <option value="教育">教育</option>
+      <option value="文化・宗教">文化・宗教</option>
+    </select>
+  </div>
+
+  <div id="stats" style="font-size:11px;color:var(--ink-muted);margin-bottom:14px"></div>
+  <div id="results"></div>
+</main>
+
+<script>
+const DATA = [{"id": "02f72ec2-6a30-4de9-8879-6d59f107d153", "title": "外務省が感染症危険情報（レベル1）を更新", "lead": "外務省は感染症危険情報（レベル1）を更新しました。在留者・渡航者は最新情報を確認してください。", "body": "外務省より感染症危険情報が発出されました。感染症への対策を講じたうえで行動するよう求めるものです。手洗い・うがいの徹底、症状が出た場合は速やかに医療機関へ相談してください。", "category": "安全・治安", "level": "urgent", "level_label": "緊急", "date": "2026年3月26日", "source_name": "外務省 海外安全情報", "source_url": "https://anzen.mofa.go.jp", "source_tier": 1, "tags": ["emergency_alert", "infectious_disease"], "score": 88}, {"id": "b1b9fdf5-bd77-4380-a48e-f9b9022830c8", "title": "iqama更新手数料が改定、4月1日より特定職種で引き上げ", "lead": "人材・社会開発省（HRSD）が建設業・製造業の居留許可更新手数料を改定。4月1日施行です。", "body": "HRSDは特定職種におけるiqama更新手数料を改定すると発表しました。建設業・製造業・物流業の一部職種が対象です。手続きはAbsherまたはMOLポータルから行えます。", "category": "ビザ・在留", "level": "high", "level_label": "重要", "date": "2026年3月26日", "source_name": "HRSD（人材・社会開発省）", "source_url": "https://www.hrsd.gov.sa/en", "source_tier": 1, "tags": ["iqama", "visa_update", "labor_law"], "score": 72}];
+
+const LEVEL_CLASS = {
+  urgent:'badge-light-urgent', high:'badge-light-high',
+  medium:'badge-light-medium', low:''
+};
+
+function esc(s){
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function highlight(text, q) {
+  if (!q) return esc(text);
+  const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+  return esc(text).replace(re, '<mark style="background:#fef3cd;border-radius:2px">$1</mark>');
+}
+
+function renderCard(a, q) {
+  const levelLabel = a.level_label ? `<span class="badge ${LEVEL_CLASS[a.level]}">${esc(a.level_label)}</span>` : '';
+  const srcLink = a.source_url
+    ? `<a href="${esc(a.source_url)}" target="_blank" rel="noopener" class="source-link">原典 ↗</a>`
+    : '';
+  return `
+<article style="background:white;border:0.5px solid var(--border);border-radius:var(--radius);
+  padding:15px 16px;margin-bottom:8px">
+  <div style="display:flex;align-items:center;gap:5px;margin-bottom:7px;flex-wrap:wrap">
+    ${levelLabel}
+    <span class="badge badge-light-cat">${esc(a.category)}</span>
+    <span style="font-size:10px;color:var(--ink-muted);margin-left:auto">${esc(a.date)}</span>
+  </div>
+  <h2 style="font-family:var(--body-serif);font-size:14px;font-weight:400;
+    color:var(--ink);line-height:1.55;margin-bottom:5px">
+    <a href="articles/${esc(a.id)}.html">${highlight(a.title, q)}</a>
+  </h2>
+  <p style="font-size:11px;color:var(--ink-muted);line-height:1.65;margin-bottom:8px">
+    ${highlight(a.lead, q)}
+  </p>
+  <div style="display:flex;align-items:center;gap:8px;padding-top:8px;border-top:0.5px solid var(--border)">
+    <span class="tier-dot tier-${a.source_tier}" title="Tier ${a.source_tier}"></span>
+    <span style="font-size:10px;color:var(--ink-muted)">${esc(a.source_name)}</span>
+    ${srcLink}
+  </div>
+</article>`;
+}
+
+function doSearch(raw) {
+  const q    = raw.trim();
+  const cat  = document.getElementById('catFilter').value;
+  const ql   = q.toLowerCase();
+  const re   = ql ? new RegExp(ql.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i') : null;
+
+  const hits = DATA.filter(a => {
+    if (cat && a.category !== cat) return false;
+    if (!re) return true;
+    return re.test(a.title) || re.test(a.lead) || re.test(a.body) ||
+           re.test(a.category) || (a.tags||[]).some(t => re.test(t));
+  }).sort((x,y) => y.score - x.score);
+
+  const stats = document.getElementById('stats');
+  const res   = document.getElementById('results');
+
+  if (!q && !cat) {
+    stats.textContent = `全 ${DATA.length} 件`;
+    res.innerHTML = hits.slice(0,30).map(a => renderCard(a, '')).join('');
+  } else {
+    stats.textContent = `${hits.length} 件ヒット`;
+    res.innerHTML = hits.length
+      ? hits.slice(0,50).map(a => renderCard(a, q)).join('')
+      : '<p style="color:var(--ink-muted);font-size:13px;padding:20px 0">該当する記事が見つかりませんでした。</p>';
+  }
+}
+
+doSearch('');
+</script><nav class="mobile-nav"><div class="mobile-nav-inner"><a class="mob-tab " href="index.html"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="12" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="12" width="7" height="7" rx="1.5"/><rect x="12" y="12" width="7" height="7" rx="1.5"/></svg><span style="font-size:9px">すべて</span></a><a class="mob-tab active" href="search.html"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><line x1="15.5" y1="15.5" x2="19" y2="19"/></svg><span style="font-size:9px">検索</span></a><a class="mob-tab " href="glossary.html"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M4 4h14v14H4z" rx="2"/><line x1="7" y1="8" x2="15" y2="8"/><line x1="7" y1="12" x2="12" y2="12"/></svg><span style="font-size:9px">用語集</span></a><a class="mob-tab " href="index.html#safety"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="11" y1="7" x2="11" y2="11"/><circle cx="11" cy="15" r="0.8" fill="currentColor" stroke="none"/></svg><span style="font-size:9px">安全</span></a><a class="mob-tab " href="index.html#visa"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="5" y="2" width="12" height="18" rx="2"/><line x1="8" y1="7" x2="14" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg><span style="font-size:9px">ビザ</span></a></div></nav>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-note">
+      © 2026 在サウジ邦人ポータル — 掲載情報は参考目的です。<br>
+      重要な判断は必ず原典（情報源リンク）および公式機関でご確認ください。
+    </div>
+    <div class="footer-note">AIエージェントによる自動収集 + 編集部による精査</div>
+  </div>
+</footer></body></html>
