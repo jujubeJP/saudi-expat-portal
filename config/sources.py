@@ -110,19 +110,14 @@ SOURCES = [
     },
     {
         "id": "moh_sehhaty",
-        "name": "MOH / Sehhaty",
-        "tier": 1,
-        "type": "scrape",
-        "url": "https://www.moh.gov.sa/en/Ministry/MediaCenter/News/Pages/default.aspx",
+        "name": "WHO / サウジアラビア保健情報",
+        "tier": 2,
+        "type": "rss",
+        "url": "https://www.who.int/rss-feeds/news-english.xml",
         "category_hint": "healthcare",
         "interval_minutes": 1440,
         "lang": "en",
-        "scrape_config": {
-            "news_list_selector": ".news-item a, .ms-listviewtable td a",
-            "title_selector": "a",
-            "link_attr": "href",
-            "base_url": "https://www.moh.gov.sa",
-        },
+        "filter_keywords": ["Saudi Arabia", "Saudi", "Riyadh", "Jeddah"],
     },
 ]
 
