@@ -339,8 +339,7 @@ def build_index(articles: list, out_dir: Path) -> None:
         a   = top[0]
         url = a.get("source_url","") or ""
         sname = a.get("source_name","")
-        src_link = (f'<a href="{e(url)}" target="_blank" rel="noopener" class="source-link">'
-                    f'出典を確認 ↗</a>') if url and url != "#" else ""
+        src_link = (f'<a href="{e(url)}" target="_blank" rel="noopener" style="color:#A8D4B8;font-size:11px;border-bottom:0.5px solid rgba(168,212,184,0.4);">出典を確認 ↗</a>') if url and url != "#" else ""
         featured_html = f"""
 <a href="articles/{e(a['id'])}.html" style="display:block;text-decoration:none">
 <article style="background:var(--ink);border-radius:var(--radius);padding:22px;
@@ -360,11 +359,11 @@ def build_index(articles: list, out_dir: Path) -> None:
   <p style="font-size:12px;color:#F0E6CC;line-height:1.7;margin-bottom:14px">
     {e(a.get("lead_ja",""))}</p>
   <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
-    <span style="font-size:11px;color:var(--gold);letter-spacing:.04em">詳細を読む →</span>
+    <span style="font-size:11px;color:#D4A855;letter-spacing:.04em">詳細を読む →</span>
     <div style="display:flex;align-items:center;gap:6px">
       <span class="tier-dot tier-{a.get('source_tier',2)}"
         style="width:5px;height:5px" title="{e(tier_label(a.get('source_tier',2)))}"></span>
-      <span style="font-size:10px;color:rgba(244,237,224,.75)">{e(sname)}</span>
+      <span style="font-size:10px;color:#C8BAA0">{e(sname)}</span>
       {src_link}
     </div>
   </div>
