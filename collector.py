@@ -79,7 +79,7 @@ def fetch_rss(source: dict, max_items: int = 20) -> list[dict]:
         with httpx.Client(headers=HEADERS, timeout=REQUEST_TIMEOUT, follow_redirects=True) as client:
             resp = client.get(url)
             resp.raise_for_status()
-            feed_text = resp.content
+            feed_text = resp.content.decode('shift_jis', errors='replace')
 
         feed = feedparser.parse(url)
 
