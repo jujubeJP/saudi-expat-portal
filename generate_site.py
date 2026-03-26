@@ -352,7 +352,7 @@ def build_index(articles: list, out_dir: Path) -> None:
   </svg>
   <div style="display:flex;gap:5px;margin-bottom:11px">
     <span class="badge" style="background:rgba(255,120,100,.18);color:#FF8A78">{e(alert_label(a.get("alert_level","low")))}</span>
-    <span class="badge" style="background:rgba(255,255,255,.2);color:#FFFFFF">{e(cat_label(a.get("category_main","")))}</span>
+    <span class="badge" style="background:rgba(255,255,255,.35);color:#FFFFFF">{e(cat_label(a.get("category_main","")))}</span>
   </div>
   <h2 style="font-family:var(--body-serif);font-size:17px;font-weight:300;
     color:var(--sand);line-height:1.55;margin-bottom:9px">{e(a.get("title_ja",""))}</h2>
