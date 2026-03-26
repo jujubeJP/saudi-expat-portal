@@ -409,7 +409,7 @@ def build_index(articles: list, out_dir: Path) -> None:
       padding:6px 16px;font-size:12px;color:var(--ink-muted);transition:all .15s">
       📖 用語を調べる</a>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+  <div style="display:grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px">
     <div>
       <div class="section-label">最新・重要記事</div>
       {featured_html}
