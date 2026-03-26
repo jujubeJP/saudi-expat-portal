@@ -81,7 +81,7 @@ def fetch_rss(source: dict, max_items: int = 20) -> list[dict]:
             resp.raise_for_status()
             feed_text = resp.text
 
-        feed = feedparser.parse(feed_text)
+        feed = feedparser.parse(url)
 
         if feed.bozo:
             logger.warning(f"[RSS] フィード解析警告: {feed.bozo_exception}")
