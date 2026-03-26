@@ -4,6 +4,9 @@ Tier / URL / カテゴリヒント / 収集間隔 を一元管理
 """
 
 SOURCES = [
+    # ──────────────────────────────────────────────
+    # Tier 1: 公式・政府系（収集間隔: 60分）
+    # ──────────────────────────────────────────────
     {
         "id": "mofa_anzen",
         "name": "外務省 海外安全情報（サウジ）",
@@ -13,36 +16,30 @@ SOURCES = [
         "category_hint": "safety",
         "interval_minutes": 60,
         "lang": "ja",
-        "filter_keywords": [
-            "サウジ", "Saudi", "サウジアラビア",
-            "アラビア", "リヤド", "ジェッダ", "ジッダ",
-        ],
-        "alert_override": True,
-    },
-    {
-        "id": "mofa_kiken",
-        "name": "外務省 危険・スポット情報（全世界）",
-        "tier": 1,
-        "type": "rss",
-        "url": "https://www.anzen.mofa.go.jp/rss/anzen_kiken.xml",
-        "category_hint": "safety",
-        "interval_minutes": 60,
-        "lang": "ja",
-        "filter_keywords": ["サウジ", "Saudi", "サウジアラビア"],
-        "alert_override": True,
+        "filter_keywords": ["サウジ", "Saudi"],  # 絞り込みキーワード
+        "alert_override": True,  # Tier1安全情報は強制的にalert_level=urgent候補
     },
     {
         "id": "embassy_riyadh",
         "name": "在サウジアラビア日本国大使館",
         "tier": 1,
-        "type": "rss",
-        "url": "https://www.anzen.mofa.go.jp/rss/anzen_spot.xml",
+        "type": "scrape",
+        "url": "https://www.sa.emb-japan.go.jp/itprtop_ja/index.html",
         "category_hint": "safety",
         "interval_minutes": 60,
         "lang": "ja",
-        "filter_keywords": ["サウジ", "Saudi", "リヤド", "Riyadh"],
+        "scrape_config": {
+            "news_list_selector": ".news-list li, .information-list li",
+            "title_selector": "a",
+            "link_attr": "href",
+            "base_url": "https://www.sa.emb-japan.go.jp",
+        },
         "alert_override": True,
     },
+
+    # ──────────────────────────────────────────────
+    # Tier 2: 主要英字メディア（収集間隔: 6時間）
+    # ──────────────────────────────────────────────
     {
         "id": "arab_news",
         "name": "Arab News",
@@ -52,7 +49,7 @@ SOURCES = [
         "category_hint": "news_general",
         "interval_minutes": 360,
         "lang": "en",
-        "filter_keywords": [],
+        "filter_keywords": [],  # 空=全件取得
     },
     {
         "id": "arab_news_saudi",
@@ -63,7 +60,6 @@ SOURCES = [
         "category_hint": "news_general",
         "interval_minutes": 360,
         "lang": "en",
-        "filter_keywords": [],
     },
     {
         "id": "saudi_gazette",
@@ -74,7 +70,6 @@ SOURCES = [
         "category_hint": "news_general",
         "interval_minutes": 360,
         "lang": "en",
-        "filter_keywords": [],
     },
     {
         "id": "expatica_sa",
@@ -83,7 +78,7 @@ SOURCES = [
         "type": "scrape",
         "url": "https://www.expatica.com/sa/",
         "category_hint": "daily_life",
-        "interval_minutes": 720,
+        "interval_minutes": 720,  # 12時間
         "lang": "en",
         "scrape_config": {
             "news_list_selector": "article.article-card",
@@ -93,6 +88,10 @@ SOURCES = [
             "base_url": "https://www.expatica.com",
         },
     },
+
+    # ──────────────────────────────────────────────
+    # Tier 1追加: 政府ポータル（週次チェック）
+    # ──────────────────────────────────────────────
     {
         "id": "hrsd_gov",
         "name": "HRSD（人的資源・社会開発省）",
@@ -100,7 +99,7 @@ SOURCES = [
         "type": "scrape",
         "url": "https://www.hrsd.gov.sa/en/news",
         "category_hint": "business",
-        "interval_minutes": 1440,
+        "interval_minutes": 1440,  # 24時間
         "lang": "en",
         "scrape_config": {
             "news_list_selector": ".news-item, .media-list li",
@@ -111,22 +110,29 @@ SOURCES = [
     },
     {
         "id": "moh_sehhaty",
-        "name": "WHO / サウジアラビア保健情報",
-        "tier": 2,
-        "type": "rss",
-        "url": "https://www.who.int/rss-feeds/news-english.xml",
+        "name": "MOH / Sehhaty",
+        "tier": 1,
+        "type": "scrape",
+        "url": "https://www.moh.gov.sa/en/Ministry/MediaCenter/News/Pages/default.aspx",
         "category_hint": "healthcare",
         "interval_minutes": 1440,
         "lang": "en",
-        "filter_keywords": ["Saudi", "Saudi Arabia", "Middle East"],
+        "scrape_config": {
+            "news_list_selector": ".news-item a, .ms-listviewtable td a",
+            "title_selector": "a",
+            "link_attr": "href",
+            "base_url": "https://www.moh.gov.sa",
+        },
     },
 ]
 
+# 主カテゴリ定義
 CATEGORIES = [
     "safety", "visa", "healthcare", "business",
     "daily_life", "education", "culture", "news_general"
 ]
 
+# 表示用日本語タグ名
 TAGS_DISPLAY_JA = {
     "visa_update": "ビザ改定",
     "iqama": "iqama",
