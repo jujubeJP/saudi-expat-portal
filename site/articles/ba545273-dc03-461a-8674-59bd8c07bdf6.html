@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>外務省が感染症危険情報（レベル1）を更新 — 在サウジ邦人ポータル</title>
+<meta name="description" content="外務省は感染症危険情報（レベル1）を更新しました。在留者・渡航者は最新情報を確認してください。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root { 
+  --sand:       #F4EDE0;
+  --sand-2:     #EDE4D2;
+  --sand-3:     #E2D6C0;
+  --ink:        #1C1410;
+  --ink-mid:    #4A3E30;
+  --ink-muted:  #9A8E7E;
+  --gold:       #8C6E3C;
+  --gold-pale:  rgba(140,110,60,0.12);
+  --green:      #1A4A2E;
+  --green-pale: rgba(26,74,46,0.08);
+  --red:        #8B2215;
+  --red-pale:   rgba(139,34,21,0.08);
+  --amber:      #7A5200;
+  --amber-pale: rgba(122,82,0,0.08);
+  --blue:       #1A3A6B;
+  --blue-pale:  rgba(26,58,107,0.08);
+  --border:     rgba(28,20,16,0.09);
+  --border-mid: rgba(28,20,16,0.15);
+  --radius:     10px;
+  --radius-sm:  6px;
+  --serif:      'Cormorant Garamond', 'Hiragino Mincho ProN', serif;
+  --body-serif: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  --sans:       'Noto Sans JP', -apple-system, 'Hiragino Sans', sans-serif;
+  --mono:       'SF Mono', 'Courier New', monospace;
+ }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--sand);color:var(--ink);font-family:var(--sans);
+  font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+.geo-stripe{height:3px;background:repeating-linear-gradient(90deg,
+  var(--gold) 0px,var(--gold) 3px,var(--sand-3) 3px,var(--sand-3) 5px,
+  var(--green) 5px,var(--green) 8px,var(--sand-3) 8px,var(--sand-3) 10px,
+  var(--gold) 10px,var(--gold) 13px,var(--sand) 13px,var(--sand) 18px);opacity:0.6}
+header{position:sticky;top:0;z-index:200;
+  background:rgba(244,237,224,0.88);
+  backdrop-filter:blur(20px) saturate(1.6);
+  -webkit-backdrop-filter:blur(20px) saturate(1.6);
+  border-bottom:0.5px solid var(--border)}
+.header-inner{max-width:1160px;margin:0 auto;padding:0 24px;height:56px;
+  display:flex;align-items:center;gap:24px}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-icon{width:30px;height:30px}
+.logo-ja{font-family:var(--body-serif);font-size:14px;color:var(--ink);letter-spacing:.02em}
+.logo-ar{font-family:var(--serif);font-size:11px;color:var(--gold);letter-spacing:.04em}
+nav.main-nav{display:flex;gap:2px;flex:1}
+nav.main-nav a{font-size:12px;color:var(--ink-muted);padding:5px 11px;
+  border-radius:99px;transition:all .15s ease-out;white-space:nowrap}
+nav.main-nav a:hover{color:var(--ink);background:var(--sand-2)}
+nav.main-nav a.active{background:var(--ink);color:var(--sand)}
+.last-update{font-size:10px;color:var(--ink-muted);flex-shrink:0}
+main{max-width:1160px;margin:0 auto;padding:28px 24px 60px}
+.section-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-muted);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.section-label::after{content:'';flex:1;height:0.5px;background:var(--border)}
+.badge{font-size:10px;padding:2px 8px;border-radius:3px;letter-spacing:.04em;
+  display:inline-flex;align-items:center;gap:4px}
+.badge-light-urgent{background:var(--red-pale);color:var(--red)}
+.badge-light-high{background:var(--amber-pale);color:var(--amber)}
+.badge-light-medium{background:var(--blue-pale);color:var(--blue)}
+.badge-light-cat{background:var(--gold-pale);color:var(--gold)}
+.badge-light-green{background:var(--green-pale);color:var(--green)}
+.tier-dot{width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block}
+.tier-1{background:var(--red)}
+.tier-2{background:var(--amber)}
+.tier-3{background:var(--blue)}
+.source-link{display:inline-flex;align-items:center;gap:4px;
+  color:var(--green);font-size:11px;
+  border-bottom:0.5px solid rgba(26,74,46,0.3);
+  transition:border-color .15s}
+.source-link:hover{border-color:var(--green)}
+footer{border-top:0.5px solid var(--border);padding:20px 24px}
+.footer-inner{max-width:1160px;margin:0 auto;display:flex;
+  justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-note{font-size:10px;color:var(--ink-muted);line-height:1.6}
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;
+  background:rgba(244,237,224,0.94);
+  backdrop-filter:blur(20px) saturate(1.6);
+  -webkit-backdrop-filter:blur(20px) saturate(1.6);
+  border-top:0.5px solid var(--border);
+  padding:8px 0 calc(8px + env(safe-area-inset-bottom));z-index:300}
+.mobile-nav-inner{display:grid;grid-template-columns:repeat(5,1fr)}
+.mob-tab{display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:4px 0;background:none;border:none;color:var(--ink-muted);font-size:10px}
+.mob-tab.active{color:var(--green)}
+.mob-tab svg{width:22px;height:22px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(max-width:600px){
+  .header-inner{height:44px;padding:0 16px}
+  .logo-ar{display:none}
+  nav.main-nav{display:none}
+  .last-update{display:none}
+  main{padding:16px 16px 100px}
+  .mobile-nav{display:block}
+  .geo-stripe{height:2px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="logo" href="../index.html">
+      <svg class="logo-icon" viewBox="0 0 30 30" fill="none">
+        <polygon points="15,2 17.9,10.6 27,10.6 19.6,15.8 22.5,24.5 15,19.3 7.5,24.5 10.4,15.8 3,10.6 12.1,10.6"
+          stroke="#8C6E3C" stroke-width="0.8" fill="none"/>
+        <circle cx="15" cy="15" r="4.5" stroke="#8C6E3C" stroke-width="0.6" fill="none"/>
+        <circle cx="15" cy="15" r="1.5" fill="#8C6E3C" opacity="0.4"/>
+      </svg>
+      <div>
+        <div class="logo-ja">在サウジ邦人ポータル</div>
+        <div class="logo-ar">في السعودية</div>
+      </div>
+    </a>
+    <nav class="main-nav"><a href="../index.html" class="active">すべて</a><a href="../search.html" class="">検索</a><a href="../glossary.html" class="">用語集</a></nav>
+    <span class="last-update">更新 04/20 02:52</span>
+  </div>
+</header>
+<div class="geo-stripe"></div>
+<main style="max-width:720px;margin:0 auto;padding:28px 24px 60px">
+  <a href="../index.html" style="display:inline-flex;align-items:center;gap:5px;
+    font-size:11px;color:var(--ink-muted);margin-bottom:20px;
+    transition:color .15s" onmouseover="this.style.color='var(--ink)'"
+    onmouseout="this.style.color='var(--ink-muted)'">← 一覧に戻る</a>
+
+  <div style="display:flex;gap:5px;margin-bottom:12px;flex-wrap:wrap">
+    <span class="badge badge-light-urgent">緊急</span>
+    <span class="badge badge-light-cat">安全・治安</span>
+    <span style="font-size:10px;color:var(--ink-muted)">
+      2026年4月20日
+    </span>
+  </div>
+
+  <h1 style="font-family:var(--body-serif);font-size:22px;font-weight:400;
+    color:var(--ink);line-height:1.5;margin-bottom:12px">
+    外務省が感染症危険情報（レベル1）を更新</h1>
+
+  <p style="font-size:15px;color:var(--ink-mid);line-height:1.75;
+    font-family:var(--body-serif);margin-bottom:20px;
+    border-bottom:0.5px solid var(--border);padding-bottom:20px">
+    外務省は感染症危険情報（レベル1）を更新しました。在留者・渡航者は最新情報を確認してください。</p>
+
+  <div style="font-size:14px;color:var(--ink-mid);line-height:1.85;
+    white-space:pre-line">
+    外務省より感染症危険情報が発出されました。感染症への対策を講じたうえで行動するよう求めるものです。手洗い・うがいの徹底、症状が出た場合は速やかに医療機関へ相談してください。</div>
+
+  
+<div style="margin-top:20px;padding:14px 16px;background:var(--green-pale);
+  border-left:2px solid var(--green);border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  font-size:13px;color:var(--green);line-height:1.6">
+  外務省「たびレジ」に登録し最新情報を受信する。症状がある場合はSehhatyアプリまたは医療機関に連絡する。
+</div>
+  <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:16px"><span class="badge badge-light-cat">emergency_alert</span><span class="badge badge-light-cat">infectious_disease</span></div>
+  
+<div style="background:white;border:0.5px solid var(--border);border-radius:var(--radius);
+  padding:16px;margin-top:24px">
+  <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-muted);margin-bottom:10px">情報源・出典</div>
+  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+    <span class="tier-dot tier-1" style="width:6px;height:6px"
+      title="Tier 1（公式）"></span>
+    <span style="font-size:13px;color:var(--ink-mid)">外務省 海外安全情報</span>
+    <span style="font-size:11px;color:var(--ink-muted)">（Tier 1（公式））</span>
+  </div>
+  <div style="margin-top:10px"><a href="https://anzen.mofa.go.jp" target="_blank" rel="noopener noreferrer" class="source-link" style="font-size:13px">出典ページを開く ↗</a></div>
+  <div style="margin-top:8px;font-size:10px;color:var(--ink-muted)">
+    収集日時: 2026-04-20T02:52
+  </div>
+</div>
+
+  <div style="margin-top:24px;padding-top:16px;border-top:0.5px solid var(--border)">
+    <a href="../glossary.html" style="font-size:12px;color:var(--gold);
+      border-bottom:0.5px solid rgba(140,110,60,.3)">
+      分からない用語は用語集で調べる →</a>
+  </div>
+</main><nav class="mobile-nav"><div class="mobile-nav-inner"><a class="mob-tab active" href="../index.html"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="12" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="12" width="7" height="7" rx="1.5"/><rect x="12" y="12" width="7" height="7" rx="1.5"/></svg><span style="font-size:9px">すべて</span></a><a class="mob-tab " href="../search.html"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><line x1="15.5" y1="15.5" x2="19" y2="19"/></svg><span style="font-size:9px">検索</span></a><a class="mob-tab " href="../glossary.html"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M4 4h14v14H4z" rx="2"/><line x1="7" y1="8" x2="15" y2="8"/><line x1="7" y1="12" x2="12" y2="12"/></svg><span style="font-size:9px">用語集</span></a><a class="mob-tab " href="../index.html#safety"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="11" y1="7" x2="11" y2="11"/><circle cx="11" cy="15" r="0.8" fill="currentColor" stroke="none"/></svg><span style="font-size:9px">安全</span></a><a class="mob-tab " href="../index.html#visa"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="5" y="2" width="12" height="18" rx="2"/><line x1="8" y1="7" x2="14" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg><span style="font-size:9px">ビザ</span></a></div></nav>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-note">
+      © 2026 在サウジ邦人ポータル — 掲載情報は参考目的です。<br>
+      重要な判断は必ず出典（情報源リンク）および公式機関でご確認ください。
+    </div>
+    <div class="footer-note">AIエージェントによる自動収集 + 編集部による精査</div>
+  </div>
+</footer></body></html>
